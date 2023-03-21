@@ -1,3 +1,4 @@
+from selenium.webdriver.support.select import Select
 from locators.add_user_modal_frame_locators import AddUserModalFrameLocators
 from page_objects.base_page import BasePage
 
@@ -24,3 +25,11 @@ class AddUserModalFrame(BasePage):
     @property
     def optionB(self):
         return self.driver.find_element(*AddUserModalFrameLocators.INPUT_OPTION_BBB)
+
+    def select(self):
+        return Select(self.driver.find_element(*AddUserModalFrameLocators.SELECT_ROLE))
+
+    @property
+    def save_button(self):
+        return self.driver.find_element(*AddUserModalFrameLocators.SAVE_BUTTON)
+

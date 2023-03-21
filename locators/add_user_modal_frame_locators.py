@@ -16,5 +16,5 @@ class AddUserModalFrameLocators:
     INPUT_OPTION_AAA = By.XPATH, "//input[@value='15']"
     INPUT_OPTION_BBB = By.XPATH, "//input[@value='16']"
     SELECT_ROLE = By.XPATH, "//select[@name='RoleId']"
-    BUTTON_SAVE = By.CLASS_NAME, ".btn.btn.btn-success"
-    BUTTON_CLOSE = By.CLASS_NAME, ".btn.btn-danger"
+    SAVE_BUTTON = By.CSS_SELECTOR, ".btn.btn-success"
+    CLOSE_BUTTON = By.CSS_SELECTOR, ".btn.btn-danger"

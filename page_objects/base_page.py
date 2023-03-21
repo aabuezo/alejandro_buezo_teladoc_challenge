@@ -1,3 +1,5 @@
+import inspect
+import logging
 from locators.base_page_locators import BasePageLocators
 
 
@@ -17,4 +19,18 @@ class BasePage:
     def find_element(self, by, value):
         return self.driver.find_element(by, value)
 
-    
+    def get_table_rows(self):
+        return self.driver.find_elements(*BasePageLocators.TABLE_ROWS)
+
+    @staticmethod
+    def get_logger():
+        loggerName = inspect.stack()[1][3]
+        logger = logging.getLogger(loggerName)
+        fileHandler = logging.FileHandler('logfile.log')
+        formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
+        fileHandler.setFormatter(formatter)
+
+        logger.addHandler(fileHandler)  # filehandler object
+
+        logger.setLevel(logging.INFO)
+        return logger

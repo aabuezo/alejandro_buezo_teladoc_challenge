@@ -1,7 +1,6 @@
 import time
 
 from behave import *
-from selenium import webdriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -14,7 +13,6 @@ use_step_matcher('re')
 
 @given('I am in users table page')
 def step_impl(context):
-    context.driver = webdriver.Chrome()
     page = AddUserModalFrame(context.driver)
     context.driver.get(page.url)
     actual_url = context.driver.current_url
@@ -42,7 +40,6 @@ def step_impl(context, title):
 
 @given('I am in Add User modal frame')
 def step_impl(context):
-    context.driver = webdriver.Chrome()
     page = AddUserModalFrame(context.driver)
     context.driver.get(page.url)
     page.button.click()
@@ -62,30 +59,44 @@ def step_impl(context, customer):
         page.optionA.click()
     else:
         page.optionB.click()
-    time.sleep(5)
 
 
 @step('I select "(.*)" option as Role')
 def step_impl(context, role):
-    pass
+    page = AddUserModalFrame(context.driver)
+    dropdown = page.select()
+    dropdown.select_by_visible_text(role)
 
 
 @then('The Save button is enabled')
 def step_impl(context):
-    pass
+    page = AddUserModalFrame(context.driver)
+    assert page.save_button.is_enabled()
 
 
 @when('I click the Save button')
 def step_impl(context):
-    pass
+    page = AddUserModalFrame(context.driver)
+    page.save_button.click()
 
 
 @then('Add User modal div closes and returns to table page')
 def step_impl(context):
-    pass
+    page = BasePage(context.driver)
+    assert page.button.is_displayed()
 
 
 @step('User "(.*)" is added to the table')
 def step_impl(context, user):
-    pass
-
+    page = BasePage(context.driver)
+    log = BasePage.get_logger()
+    rows = page.get_table_rows()
+    users = []
+    for row in rows:
+        user_row = row.text.split(" ")
+        first_name = user_row[0]
+        log.info(first_name)
+        users.append(first_name.strip())
+    log.info(user)
+    log.info(users)
+    assert user in users
