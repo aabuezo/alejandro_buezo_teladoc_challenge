@@ -10,4 +10,3 @@ def step_impl(context):
     context.driver.get(page.url)
     actual_url = context.driver.current_url
     assert actual_url == page.url
-

@@ -1,7 +1,4 @@
-import time
-
 from behave import *
-from page_objects.add_user_modal_frame import AddUserModalFrame
 from page_objects.backdrop_modal_frame import BackdropModalFrame
 from page_objects.base_page import BasePage
 
@@ -20,7 +17,7 @@ def step_impl(context, user):
         usernames.append(username.strip())
     log.info(user)
     log.info(usernames)
-    assert username in usernames
+    assert user in usernames
 
 
 @when('I click the X to delete the user "(.*)"')
@@ -63,5 +60,4 @@ def step_impl(context, user):
         usernames.append(username.strip())
     log.info(user)
     log.info(usernames)
-    time.sleep(5)
     assert user not in usernames

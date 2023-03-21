@@ -1,12 +1,29 @@
-# Set up
+# UI Homework Assignment
 
-You will need to install the following:
+## Story
+As an Engr. I need to automate: https://www.way2automation.com/angularjs-protractor/webtables/
 
+### Scenario 1
+Add a user and validate the user has been added to the table
+
+### Scenario 2
+Delete the user "novak" from the table and validate the user has been deleted.
+
+## Set up
+
+You will need to install the following in order to run the tests:
+
+- Python 3.10 or above
 - https://sites.google.com/a/chromium.org/chromedriver/downloads
 - behave (http://pythonhosted.org/behave/)
 - selenium (http://selenium-python.readthedocs.io/installation.html)
 
-Or, in a terminal, from the base directory:
+Clone this repo: 
+```bash
+git clone https://github.com/aabuezo/alejandro_buezo_teladoc_challenge.git
+```
+
+In a terminal, from the base directory:
 
 1. Create the virtual environment
 ```bash

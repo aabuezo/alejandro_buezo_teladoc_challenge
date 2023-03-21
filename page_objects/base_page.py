@@ -22,6 +22,11 @@ class BasePage:
     def get_table_rows(self):
         return self.driver.find_elements(*BasePageLocators.TABLE_ROWS)
 
+    def delete_user(self, index):
+        button, selector = BasePageLocators.DEL_USER_BUTTON
+        selector = selector + "[" + str(index) + "]"
+        self.driver.find_element(button, selector).click()
+
     @staticmethod
     def get_logger():
         loggerName = inspect.stack()[1][3]
@@ -34,8 +39,3 @@ class BasePage:
 
         logger.setLevel(logging.INFO)
         return logger
-
-    def delete_user(self, index):
-        button, selector = BasePageLocators.DEL_USER_BUTTON
-        selector = selector + "[" + str(index) + "]"
-        self.driver.find_element(button, selector).click()

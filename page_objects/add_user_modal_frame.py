@@ -12,12 +12,6 @@ class AddUserModalFrame(BasePage):
     def title(self):
         return self.find_element(*AddUserModalFrameLocators.MODAL_TITLE).text
 
-    def modal_frame_is_present(self):
-        return self.driver.find_element(*AddUserModalFrameLocators.MODAL_FRAME).is_present()
-
-    def first_name(self, field):
-        return self.driver.find_element(*AddUserModalFrameLocators.INPUTS[field])
-
     @property
     def optionA(self):
         return self.driver.find_element(*AddUserModalFrameLocators.INPUT_OPTION_AAA)
@@ -26,10 +20,15 @@ class AddUserModalFrame(BasePage):
     def optionB(self):
         return self.driver.find_element(*AddUserModalFrameLocators.INPUT_OPTION_BBB)
 
-    def select(self):
-        return Select(self.driver.find_element(*AddUserModalFrameLocators.SELECT_ROLE))
-
     @property
     def save_button(self):
         return self.driver.find_element(*AddUserModalFrameLocators.SAVE_BUTTON)
 
+    def modal_frame_is_present(self):
+        return self.driver.find_element(*AddUserModalFrameLocators.MODAL_FRAME).is_present()
+
+    def first_name(self, field):
+        return self.driver.find_element(*AddUserModalFrameLocators.INPUTS[field])
+
+    def select(self):
+        return Select(self.driver.find_element(*AddUserModalFrameLocators.SELECT_ROLE))
