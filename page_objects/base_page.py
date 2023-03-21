@@ -34,3 +34,8 @@ class BasePage:
 
         logger.setLevel(logging.INFO)
         return logger
+
+    def delete_user(self, index):
+        button, selector = BasePageLocators.DEL_USER_BUTTON
+        selector = selector + "[" + str(index) + "]"
+        self.driver.find_element(button, selector).click()

@@ -1,5 +1,3 @@
-import time
-
 from behave import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -9,14 +7,6 @@ from page_objects.add_user_modal_frame import AddUserModalFrame
 from page_objects.base_page import BasePage
 
 use_step_matcher('re')
-
-
-@given('I am in users table page')
-def step_impl(context):
-    page = AddUserModalFrame(context.driver)
-    context.driver.get(page.url)
-    actual_url = context.driver.current_url
-    assert actual_url == page.url
 
 
 @when('I click the Add User button')

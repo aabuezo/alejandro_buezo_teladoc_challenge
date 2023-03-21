@@ -33,6 +33,7 @@ python -m behave
 ```bash
 cd venv\Scripts
 .\activate
+python -m behave
 ```
 
 If you want to run the tests in PyCharm, you'll need to create appropriate configurations.
