@@ -1,11 +1,17 @@
 from behave import *
+from selenium import webdriver
+
+
+from page_objects.add_user_modal_frame import AddUserModalFrame
 
 use_step_matcher('re')
 
 
 @given('I am in users table page')
 def step_impl(context):
-    pass
+    with webdriver.Chrome() as context.driver:
+        page = AddUserModalFrame(context.driver)
+        context.driver.get(page.url)
 
 
 @when('I click "(.*)" button')
